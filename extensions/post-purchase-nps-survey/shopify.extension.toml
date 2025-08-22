@@ -1,0 +1,44 @@
+api_version = "2025-04"
+
+[[extensions]]
+name = "NPS Survey"
+type = "ui_extension"
+handle = "nps-survey"
+
+[extensions.capabilities]
+api_access = true
+network_access = true
+
+[[extensions.metafields]]
+namespace = "boilerplate_shop_namespace"
+key = "plan_status"
+
+[[extensions.metafields]]
+namespace = "boilerplate_shop_namespace"
+key = "plan_type"
+
+[[extensions.targeting]]
+module = "./src/Checkout.jsx"
+target = "purchase.thank-you.block.render"
+export = "thankYou"
+
+[[extensions.targeting]]
+module = "./src/Checkout.jsx"
+target = "customer-account.order-status.block.render"
+export = "orderStatus"
+
+[extensions.settings]
+  [[extensions.settings.fields]]
+  key = "nps_question"
+  type = "single_line_text_field"
+  name = "NPS Question"
+  description = "e.g., How likely are you to recommend us to a friend?"
+
+  [[extensions.settings.fields]]
+  key = "status"
+  type = "single_line_text_field"
+  name = "Select ratings to show"
+    [[extensions.settings.fields.validations]]
+    name = "choices"
+    value = "[\"5\", \"10\"]"
+  

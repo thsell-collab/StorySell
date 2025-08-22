@@ -1,0 +1,34 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "2b517004ae8234cc6d77f42f6ce2bb37"
+name = "LaunchQuik"
+handle = "boilerplate-final"
+application_url = "https://apps-topaz.vercel.app"
+embedded = true
+
+[build]
+include_config_on_deploy = true
+automatically_update_urls_on_dev = true
+
+[webhooks]
+api_version = "2025-07"
+
+[[webhooks.subscriptions]]
+topics = [ "app/uninstalled", "orders/create" ]
+compliance_topics = [ "customers/redact", "customers/data_request", "shop/redact" ]
+uri = "/webhooks"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_themes,read_locales,read_markets_home,customer_read_customers,customer_read_orders,customer_write_customers,customer_write_orders,read_customers,read_products,write_customers,write_discounts,write_discounts_allocator_functions,write_orders,write_products,write_purchase_options"
+
+[auth]
+redirect_urls = ["https://apps-topaz.vercel.app/auth/callback", "https://apps-topaz.vercel.app/auth/shopify/callback", "https://apps-topaz.vercel.app/api/auth/callback"]
+
+[pos]
+embedded = false
+
+[app_proxy]
+url = "https://apps-topaz.vercel.app/api"
+subpath = "unique-proxy-handle"
+prefix = "apps"

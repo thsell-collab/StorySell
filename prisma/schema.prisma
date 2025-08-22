@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Session {
+  id            String    @id
+  shop          String
+  state         String
+  isOnline      Boolean   @default(false)
+  scope         String?
+  expires       DateTime?
+  accessToken   String
+  userId        BigInt?
+  firstName     String?
+  lastName      String?
+  email         String?
+  accountOwner  Boolean   @default(false)
+  locale        String?
+  collaborator  Boolean?  @default(false)
+  emailVerified Boolean?  @default(false)
+}
+
+model Stores {
+  id                    Int       @id @default(autoincrement())
+  shop                  String?   @unique
+  shop_owner_name       String?
+  email                 String?
+  charge_id             BigInt?
+  code                  String?
+  access_token          String?
+  activated_on          DateTime? @db.Date
+  trial_days            Int?
+  trial_ends_on         DateTime? @db.Date
+  api_client_id         String?
+  decorated_return_url  String?
+  confirmation_url      String?
+  locale                String?
+  host                  String?
+  plan_id               String?
+  subscription_id       String?
+  is_webhook_created    Int?      @default(0)
+  email_sent            Int?      @default(0)
+  last_order_created_at DateTime?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+  plan_billing_cycle    String?
+  plan_status           String?   @default("inactive")
+  plan_type             Int?      @default(0)
+}
