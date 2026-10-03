@@ -748,7 +748,7 @@ na documentação da Shopify), porque ele muda com frequência.
 Atualize ao concluir cada etapa (data + commit).
 
 - [x] Etapa 0 — Trocar LaunchQuik pelo template oficial (03/10/2026, commit `d1ce58e`)
-- [ ] Etapa 1 — Ambiente de teste do responsável
+- [ ] Etapa 1 — Ambiente de teste do responsável (guia `docs/COMO-TESTAR.md` pronto em 03/10/2026; falta o responsável abrir o app na loja e enviar o `client_id`)
 - [ ] Etapa 2 — Loja, desinstalação e webhooks de privacidade
 - [ ] Etapa 3 — Painel: escolher vídeo do produto
 - [ ] Etapa 4 — Bloco de tema mostra o vídeo
@@ -785,6 +785,17 @@ Atualize ao concluir cada etapa (data + commit).
     não existem).
   - Migração inicial `20261003000000_init` (PostgreSQL) testada com `prisma migrate deploy` num
     PostgreSQL 16 local.
+- 03/10/2026 — Etapa 1:
+  - A loja de desenvolvimento agora é criada pelo **Dev Dashboard** (<https://dev.shopify.com/>,
+    Stores → Create store → Dev). O caminho antigo do painel de parceiro ficou como alternativa no guia.
+  - Shopify CLI atual: 4.8.4 (exige Node.js ≥ 22.12). Instalação: `npm install -g @shopify/cli@latest`.
+  - O guia usa o **GitHub Desktop** para baixar o projeto e as atualizações, porque o repositório é
+    privado e o login pelo GitHub Desktop é mais simples que configurar o Git no terminal. O `git pull`
+    ficou como alternativa.
+  - Na primeira execução, o CLI pode sugerir outro nome de arquivo de configuração. O guia orienta a
+    manter `shopify.app.toml`.
+  - O guia inclui como aprovar (*merge*) os pull requests de cada etapa, porque o responsável testa a
+    partir da `main`.
 
 ---
 

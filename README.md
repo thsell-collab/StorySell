@@ -10,11 +10,11 @@
 
 O plano completo, com todas as decisões e etapas, está em [`PLANO.md`](PLANO.md).
 
-> **Situação atual:** base do projeto pronta (Etapa 0). O app ainda não tem funcionalidades de vídeo.
+> **Situação atual:** base do projeto pronta (Etapas 0 e 1). O app ainda não tem funcionalidades de vídeo.
 
 ## Como rodar no seu computador
 
-O passo a passo completo e detalhado vem na **Etapa 1** do plano, no arquivo `docs/COMO-TESTAR.md`.
+O passo a passo completo e detalhado está em [`docs/COMO-TESTAR.md`](docs/COMO-TESTAR.md).
 Resumo para quem já tem tudo instalado:
 
 1. Instale o [Node.js](https://nodejs.org/) (versão 22.12 ou mais nova), o
