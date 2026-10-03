@@ -747,7 +747,7 @@ na documentação da Shopify), porque ele muda com frequência.
 
 Atualize ao concluir cada etapa (data + commit).
 
-- [ ] Etapa 0 — Trocar LaunchQuik pelo template oficial
+- [x] Etapa 0 — Trocar LaunchQuik pelo template oficial (03/10/2026, commit COMMIT_ETAPA_0)
 - [ ] Etapa 1 — Ambiente de teste do responsável
 - [ ] Etapa 2 — Loja, desinstalação e webhooks de privacidade
 - [ ] Etapa 3 — Painel: escolher vídeo do produto
@@ -767,6 +767,24 @@ Atualize ao concluir cada etapa (data + commit).
 (As sessões devem anotar aqui qualquer decisão nova ou mudança, com data.)
 
 - 03/10/2026 — Plano criado. Todas as sugestões da seção 3 aceitas pelo responsável.
+- 03/10/2026 — Etapa 0:
+  - Base: template `Shopify/shopify-app-template-react-router`, commit `93348fe` (01/10/2026).
+  - Não copiados do template: `.github/` (automações do repositório da Shopify), `.claude/`, `.cursor/`,
+    `.gemini/`, `CHANGELOG.md` e `AGENTS.md` (o conteúdo útil foi para o `CLAUDE.md`). Mantido o
+    `LICENSE.md` (MIT da Shopify), que a licença exige preservar.
+  - Removidas as páginas de exemplo do template (botão "Generate a product" e "Additional page"). A
+    página inicial virou um texto simples do StorySell, sem chamadas à API, porque os escopos estão vazios.
+  - Versão da API 2026-10: constante `API_VERSION` em `app/shopify.server.ts`, repetida no
+    `shopify.app.toml` e no `.graphqlrc.ts`.
+  - `shopify.web.toml` gerado a partir do `shopify.web.toml.liquid` do template, para npm.
+  - `package-lock.json` **passa a ser versionado** (o template o ignora), para o `npm ci` da Etapa 12
+    instalar sempre as mesmas versões.
+  - `app/globals.d.ts` passa a carregar os tipos do App Bridge (`<s-app-nav>`), que antes só vinham
+    pelo exemplo removido.
+  - Webhooks de privacidade continuam comentados no `shopify.app.toml` até a Etapa 2 (as rotas ainda
+    não existem).
+  - Migração inicial `20261003000000_init` (PostgreSQL) testada com `prisma migrate deploy` num
+    PostgreSQL 16 local.
 
 ---
 

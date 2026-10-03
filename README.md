@@ -1,145 +1,63 @@
-# LaunchQuik - Shopify Remix App Boilerplate
+# StorySell
 
-LaunchQuik is a complete Shopify Remix app boilerplate & toolkit with everything you need to launch your Shopify app faster than ever. It allows developers to focus on solving merchant problems, instead of boring and repetitive tasks.
+**StorySell** é um app para a Shopify App Store.
 
-## What you will get?
+- O lojista escolhe **um vídeo para cada produto**.
+- O vídeo aparece **na página daquele produto** na loja, por meio de um bloco que o lojista coloca
+  pelo editor de temas.
+- Um **dashboard** mostra, por produto e por período: visualizações, pessoas que assistiram, compras
+  feitas por quem assistiu, taxa de conversão e valor vendido.
 
-• **Billing & Subscriptions**: Works with both managed and manual pricing. Monthly & annual subscription plans, usage charges, one-time charge, all integrated in the code.
-• **Webhooks integration**: Effortlessly create and manage real-time webhook events.
-• **Emails integration**: Supports Resend, Mailgun and Brevo. Send Emails on install and uninstall along with separate admin page for sending app updates to all Merchants.
-• **Embedded app with Polaris**: Ready to use embedded app with Polaris components.
-• **Ready-to-use Extensions**: Jump-start your development with ready-to-use theme app blocks, checkout UI extensions, post-purchase extensions, app embed blocks, and many more coming in future updates. Don't forget to say bye to "CORS errors".
-• **Pagination tables**: Built-in pagination tables for orders and products along with search, sort and filter options.
-• **Analytics dashboard**: Built-in analytics dashboard to track orders revenue, total count based on date range.
-• **Built for Shopify**: It is optimized for "Built for Shopify".
-• **Scalable architecture**: Launch apps that can grow with your business.
+O plano completo, com todas as decisões e etapas, está em [`PLANO.md`](PLANO.md).
 
-## Why Choose LaunchQuik?
+> **Situação atual:** base do projeto pronta (Etapa 0). O app ainda não tem funcionalidades de vídeo.
 
-• **Save Time**: Focus on building app that solves a merchant problem, not on repetitive tasks.
-• **Avoid headaches**: No more cors error, setting up Billing API, analytics dashboard, webhook configuration, listing screenshots.
-• **Earn fast**: The faster you launch, the more you learn, the more you earn.
-• **Stay Updated**: I updated code regularly up with Shopify's latest features and best practices, so you don't have to invest time.
+## Como rodar no seu computador
 
+O passo a passo completo e detalhado vem na **Etapa 1** do plano, no arquivo `docs/COMO-TESTAR.md`.
+Resumo para quem já tem tudo instalado:
 
-
-## Getting Started
-
-### Pre-requisites
-
-To use LaunchQuik effectively, make sure your development environment meets the following requirements:
-
-#### Node.js
-• **Why**: Required to run Shopify Remix and LaunchQuik.
-• **Version**: 18.x or later (LTS recommended)
-
-Note: You can't use Polaris 13.9.5 with Node 18.x
-
-```bash
-node --version
-```
-
-#### npm or yarn
-• **Why**: Required to install and manage dependencies.
-• **npm**: 9.x or later
-• **pnpm**: 8.x or later
-• **yarn**: 1.22.x or later
-
-```bash
-npm -v
-# or
-yarn -v
-# or
-pnpm -v
-```
-
-#### Git
-• **Why**: For cloning the repository and version control.
-• **Version**: 2.x or later
-
-```bash
-git -v
-```
-
-#### Additional Software
-• **Code Editor**: VS Code with the Shopify Remix extension recommended
-• **Browser**: Latest Chrome, Safari, Edge or Firefox
-
-#### Shopify Requirements
-• **Shopify Partner Account**: Required to create & manage your Shopify apps
-• **Shopify CLI**: v3.x
-• **Shopify Development Store**: To test your Shopify app
-
-#### Basic knowledge of:
-• [GraphQL for Shopify APIs](https://shopify.dev/docs/api/admin-rest/2025-01/resources/graphql)
-• [Remix framework](https://remix.run/)
-• [React.js](https://react.dev/)
-• [Shopify Polaris design system](https://polaris.shopify.com/)
-• [Prisma](https://prisma.io/)
-
-### Installation Process
-
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/launchquik/toolkit.git
-   cd launchquik
-   ```
-
-2. **Install Dependencies**
-   ```bash
+1. Instale o [Node.js](https://nodejs.org/) (versão 22.12 ou mais nova), o
+   [Git](https://git-scm.com/) e o [Shopify CLI](https://shopify.dev/docs/apps/tools/cli).
+2. Baixe o projeto e instale as dependências:
+   ```shell
+   git clone <endereço do repositório>
+   cd StorySell
    npm install
-   # or
-   yarn install
-   # or
-   pnpm install
    ```
-
-3. **Set Up Environment Variables**
-   • Copy `.env.example` and rename it to `.env`
-   • Fill in required values like DB connection, app name, etc.
-
-   ```env
-   APP_NAME=LaunchQuik
-   APP_HANDLE=launchQuik-app-handle
-   DATABASE_URL=postgres://postgres:password@127.0.0.1:5432/launchquik-db
-   SHOPIFY_APP_URL=https://apps-remix.com
-   SHOPIFY_API_KEY=12345678
-   SHOPIFY_API_SECRET=12345678
-   ```
-
-   Then open `shopify.app.toml` and add:
-   ```toml
-   scopes = "read_locales, read_customers, read_products, write_discounts, write_orders, write_products, write_metaobject_definitions, write_metaobjects, write_products"
-   ```
-
-4. **Generate Prisma Migration**
-   ```bash
-   npm run prisma migrate dev
-   # or
-   yarn prisma migrate dev
-   # or
-   pnpm prisma migrate dev
-   ```
-
-5. **Run Your App Locally**
-   ```bash
+3. Copie o arquivo `.env.example` para `.env` e preencha o `DATABASE_URL` com o endereço do banco
+   PostgreSQL (Neon).
+4. Rode o app:
+   ```shell
    npm run dev
-   # or
-   yarn dev
-   # or
-   pnpm dev
    ```
+   Na primeira vez, o Shopify CLI pede login e pergunta se você quer criar um app novo.
+   Responda **sim** e dê o nome **StorySell**.
+5. Aperte **P** no terminal para abrir o app e instale-o na sua loja de desenvolvimento.
 
-6. **Verify App Installation**
-   • Check your console for errors
-   • Check if all pages are working
+## Comandos úteis
 
-## Need Help?
+| Comando | O que faz |
+|---|---|
+| `npm run dev` | Roda o app no seu computador, conectado à loja de desenvolvimento. |
+| `npm run build` | Gera a versão de produção (serve para conferir se está tudo certo). |
+| `npm run lint` | Procura erros comuns no código. |
+| `npm run typecheck` | Confere os tipos do TypeScript. |
+| `npm run deploy` | Publica a configuração e as extensões na Shopify. |
 
-Our documentation covers everything you need to know about LaunchQuik. If you can't find what you're looking for, check out our FAQ or email me at [support@launchquik.dev](mailto:support@launchquik.dev).
+## Tecnologias
 
-Start launching amazing Shopify apps today with LaunchQuik!
+- [React Router](https://reactrouter.com/) com o pacote oficial
+  [`@shopify/shopify-app-react-router`](https://shopify.dev/docs/api/shopify-app-react-router)
+- [Polaris web components](https://shopify.dev/docs/api/app-home/using-polaris-components) e App Bridge
+- [Prisma](https://www.prisma.io/) + PostgreSQL ([Neon](https://neon.tech/))
+- API GraphQL Admin da Shopify, versão **2026-10**
 
----
+## Origem do código
 
-**Note**: This boilerplate is designed to be a starting point. Customize it according to your specific app requirements while maintaining the established patterns and best practices.
+Este projeto parte do template oficial e gratuito da Shopify,
+[`shopify-app-template-react-router`](https://github.com/Shopify/shopify-app-template-react-router),
+distribuído sob a licença MIT (ver [`LICENSE.md`](LICENSE.md)).
+
+**Mantenha este repositório privado.** O histórico do Git ainda contém código de terceiros de uso
+restrito (ver `PLANO.md`, risco R17).
