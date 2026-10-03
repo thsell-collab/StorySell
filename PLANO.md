@@ -747,7 +747,7 @@ na documentação da Shopify), porque ele muda com frequência.
 
 Atualize ao concluir cada etapa (data + commit).
 
-- [x] Etapa 0 — Trocar LaunchQuik pelo template oficial (03/10/2026, commit COMMIT_ETAPA_0)
+- [x] Etapa 0 — Trocar LaunchQuik pelo template oficial (03/10/2026, commit `d1ce58e`)
 - [ ] Etapa 1 — Ambiente de teste do responsável
 - [ ] Etapa 2 — Loja, desinstalação e webhooks de privacidade
 - [ ] Etapa 3 — Painel: escolher vídeo do produto
