@@ -1,0 +1,38 @@
+# This file stores configurations for your Shopify app.
+# client_id is filled in by the Shopify CLI on the first `npm run dev` (see PLANO.md, Etapa 1).
+# It is not a secret, so this file is committed.
+client_id = ""
+name = "StorySell"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+# Scopes are added step by step, as each feature needs them (see PLANO.md, section 5).
+scopes = ""
+
+[webhooks]
+# Keep in sync with API_VERSION in app/shopify.server.ts (PLANO.md, D12).
+api_version = "2026-10"
+
+  # Handled by: /app/routes/webhooks.app.uninstalled.tsx
+  [[webhooks.subscriptions]]
+  uri = "/webhooks/app/uninstalled"
+  topics = ["app/uninstalled"]
+
+  # Handled by: /app/routes/webhooks.app.scopes_update.tsx
+  [[webhooks.subscriptions]]
+  topics = [ "app/scopes_update" ]
+  uri = "/webhooks/app/scopes_update"
+
+  # Mandatory compliance topics for public apps. Enabled in PLANO.md, Etapa 2.
+  # See: https://shopify.dev/docs/apps/build/privacy-law-compliance
+  # [[webhooks.subscriptions]]
+  # uri = "/webhooks/customers/data_request"
+  # compliance_topics = ["customers/data_request"]
+
+  # [[webhooks.subscriptions]]
+  # uri = "/webhooks/customers/redact"
+  # compliance_topics = ["customers/redact"]
+
+  # [[webhooks.subscriptions]]
+  # uri = "/webhooks/shop/redact"
+  # compliance_topics = ["shop/redact"]
